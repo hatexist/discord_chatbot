@@ -16,7 +16,7 @@ const axios = require("axios")
 
 
 //=============================================
-const channel_id = "put channel ID here"
+const channel_id = "1161629471217037357"
 //=============================================
 
 
@@ -31,10 +31,24 @@ client.on('message', async (message) => {
    errorEmbed(`Bot error, please try again!`,message)
    }
 })
+client.on('ready', () => {
+  client.user.setStatus('online')
+  client.user.setStatus('idle')
+  client.user.setStatus('dnd')
+  client.user.setStatus('invisible');
 
-client.on('ready', async () => {
-    console.clear()
-    console.log(`${client.user.tag} is online!`)
+  client.user.setStatus('invisible').then(() => {
+    console.log('e');
+});
+
+  client.user.setPresence({
+    activity: {
+      type: "LISTENING",
+      name: "the 4fuck klan" 
+},
+    status:'dnd'
+});
+
 })
 
 client.login(process.env.TOKEN);
